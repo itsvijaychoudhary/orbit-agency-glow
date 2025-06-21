@@ -88,7 +88,7 @@ const Navigation = () => {
                 isMobileMenuOpen ? 'opacity-0' : ''
               }`}></span>
               <span className={`block h-0.5 w-full bg-white transform transition-transform duration-300 ${
-                isMobile MenuOpen ? '-rotate-45 -translate-y-2' : ''
+                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}></span>
             </div>
           </button>

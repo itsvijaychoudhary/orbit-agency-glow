@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 
 const Services = () => {
@@ -56,7 +55,7 @@ const Services = () => {
   }, [isVisible, services.length]);
 
   return (
-    <section ref={containerRef} className="py-24 px-4">
+    <section ref={containerRef} className="py-24 px-4" id="services">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-1000 ${

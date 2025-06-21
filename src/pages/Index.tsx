@@ -8,6 +8,9 @@ import VideoShowreel from '@/components/VideoShowreel';
 import ClientLogos from '@/components/ClientLogos';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import AboutSection from '@/components/AboutSection';
+import WorkSection from '@/components/WorkSection';
+import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,6 +28,9 @@ const Index = () => {
         <Services />
         <VideoShowreel />
         <ClientLogos />
+        <AboutSection />
+        <WorkSection />
+        <ContactSection />
         <CTASection />
       </main>
       <Footer />

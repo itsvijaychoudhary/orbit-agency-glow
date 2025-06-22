@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 
 const TestimonialsSection = () => {
@@ -68,7 +69,7 @@ const TestimonialsSection = () => {
 
   return (
     <section ref={containerRef} className="py-24 px-4 bg-gray-800 overflow-hidden" id="testimonials">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -77,88 +78,31 @@ const TestimonialsSection = () => {
           </h2>
         </div>
 
-        {/* Marquee Layout */}
-        <div className="relative">
-          {/* Top Row - Large cards */}
-          <div className="flex animate-[marquee-left_30s_linear_infinite] mb-6">
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <div 
-                key={`large-${index}`}
-                className="flex-shrink-0 w-96 h-48 bg-gray-700 p-6 rounded-lg mx-4"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 className="text-lg font-bold">{testimonial.name}</h3>
-                    <div className="flex items-center gap-2 text-blue-400">
-                      <span className="text-sm">{testimonial.followers} • {testimonial.platform}</span>
-                    </div>
+        {/* Single Row Layout */}
+        <div className="flex animate-[marquee-left_40s_linear_infinite] gap-6">
+          {[...testimonials, ...testimonials].map((testimonial, index) => (
+            <div 
+              key={`testimonial-${index}`}
+              className="flex-shrink-0 w-80 h-72 bg-gray-700 p-6 rounded-lg"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <h3 className="text-lg font-bold">{testimonial.name}</h3>
+                  <div className="flex items-center gap-2 text-blue-400">
+                    <span className="text-sm">{testimonial.followers} • {testimonial.platform}</span>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  "{testimonial.testimonial}"
-                </p>
               </div>
-            ))}
-          </div>
-
-          {/* Middle Row - Medium cards */}
-          <div className="flex animate-[marquee-right_25s_linear_infinite] mb-6">
-            {[...testimonials.slice(2, 5), ...testimonials.slice(2, 5)].map((testimonial, index) => (
-              <div 
-                key={`medium-${index}`}
-                className="flex-shrink-0 w-80 h-40 bg-gray-700 p-5 rounded-lg mx-3"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name}
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 className="text-base font-bold">{testimonial.name}</h3>
-                    <div className="text-blue-400 text-xs">
-                      {testimonial.followers} • {testimonial.platform}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-xs leading-relaxed">
-                  "{testimonial.testimonial}"
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Row - Small cards */}
-          <div className="flex animate-[marquee-left_20s_linear_infinite]">
-            {[...testimonials.slice(1, 4), ...testimonials.slice(1, 4)].map((testimonial, index) => (
-              <div 
-                key={`small-${index}`}
-                className="flex-shrink-0 w-64 h-32 bg-gray-700 p-4 rounded-lg mx-2"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name}
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 className="text-sm font-bold">{testimonial.name}</h3>
-                    <div className="text-blue-400 text-xs">
-                      {testimonial.followers}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-xs leading-tight">
-                  "{testimonial.testimonial.substring(0, 80)}..."
-                </p>
-              </div>
-            ))}
-          </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                "{testimonial.testimonial}"
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

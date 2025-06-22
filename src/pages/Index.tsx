@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
+import ResultsSection from '@/components/ResultsSection';
 import MarqueeText from '@/components/MarqueeText';
 import Services from '@/components/Services';
-import VideoShowreel from '@/components/VideoShowreel';
-import ClientLogos from '@/components/ClientLogos';
-import CTASection from '@/components/CTASection';
-import Footer from '@/components/Footer';
+import ProcessSection from '@/components/ProcessSection';
 import AboutSection from '@/components/AboutSection';
-import WorkSection from '@/components/WorkSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import FAQSection from '@/components/FAQSection';
+import CTASection from '@/components/CTASection';
 import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
@@ -24,16 +24,16 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
+        <ResultsSection />
         <MarqueeText />
         <Services />
-        <VideoShowreel />
-        <ClientLogos />
+        <ProcessSection />
         <AboutSection />
-        <WorkSection />
+        <TestimonialsSection />
+        <FAQSection />
         <ContactSection />
         <CTASection />
       </main>
-      <Footer />
     </div>
   );
 };

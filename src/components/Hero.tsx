@@ -8,6 +8,13 @@ const Hero = () => {
     setIsVisible(true);
   }, []);
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
       {/* Background gradient */}
@@ -23,26 +30,24 @@ const Hero = () => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-          Creative <span className="text-blue-500">Solutions</span>
+          Book a <span className="text-blue-500">Discovery</span>
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
-            That Inspire
+            Call Today
           </span>
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-          We're a full-service creative agency specializing in brand strategy, digital marketing, 
-          and cutting-edge design solutions that drive real results for forward-thinking businesses.
+          Transform your personal brand with our complete content creation strategy. 
+          From ideation to viral content - we handle everything so you can focus on scaling.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 hover:scale-105 transform">
-            Let's Work Together
-          </button>
-          <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 hover:scale-105 transform">
-            View Our Work
-          </button>
-        </div>
+        <button 
+          onClick={scrollToContact}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-full font-bold text-xl transition-all duration-200 hover:scale-105 transform shadow-lg"
+        >
+          Book Your Discovery Call
+        </button>
       </div>
 
       {/* Scroll indicator */}

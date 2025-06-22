@@ -22,33 +22,19 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-gray-900/95 backdrop-blur-sm' : 'bg-transparent'
     }`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <button 
-            onClick={scrollToTop}
-            className="text-2xl font-bold text-white hover:text-blue-500 transition-colors"
-          >
-            [Agency Name]
-          </button>
+          {/* Logo - Left */}
+          <div className="text-2xl font-bold text-white">
+            [Brand Studio]
+          </div>
 
-          {/* Desktop Navigation */}
+          {/* Center Navigation */}
           <div className="hidden md:flex space-x-8">
-            <button 
-              onClick={scrollToTop}
-              className="text-white hover:text-blue-500 transition-colors font-medium"
-            >
-              Home
-            </button>
             <button 
               onClick={() => scrollToSection('about')}
               className="text-white hover:text-blue-500 transition-colors font-medium"
@@ -62,18 +48,20 @@ const Navigation = () => {
               Services
             </button>
             <button 
-              onClick={() => scrollToSection('work')}
+              onClick={() => scrollToSection('testimonials')}
               className="text-white hover:text-blue-500 transition-colors font-medium"
             >
-              Work
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-blue-500 transition-colors font-medium"
-            >
-              Contact
+              Testimonials
             </button>
           </div>
+
+          {/* Book a Call Button - Right */}
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition-colors"
+          >
+            Book a Call
+          </button>
 
           {/* Mobile Menu Button */}
           <button
@@ -100,12 +88,6 @@ const Navigation = () => {
         }`}>
           <div className="flex flex-col space-y-4 bg-gray-800 rounded-lg p-4 mt-2">
             <button 
-              onClick={scrollToTop}
-              className="text-white hover:text-blue-500 transition-colors font-medium text-left"
-            >
-              Home
-            </button>
-            <button 
               onClick={() => scrollToSection('about')}
               className="text-white hover:text-blue-500 transition-colors font-medium text-left"
             >
@@ -118,16 +100,16 @@ const Navigation = () => {
               Services
             </button>
             <button 
-              onClick={() => scrollToSection('work')}
+              onClick={() => scrollToSection('testimonials')}
               className="text-white hover:text-blue-500 transition-colors font-medium text-left"
             >
-              Work
+              Testimonials
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-blue-500 transition-colors font-medium text-left"
+              className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium text-center"
             >
-              Contact
+              Book a Call
             </button>
           </div>
         </div>

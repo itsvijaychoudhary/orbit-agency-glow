@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new IntersectionObServer(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
@@ -81,7 +81,7 @@ const TestimonialsSection = () => {
         {/* Marquee Layout */}
         <div className="relative">
           {/* Top Row - Large cards */}
-          <div className="flex animate-[scroll_30s_linear_infinite] mb-6">
+          <div className="flex animate-[marquee-left_30s_linear_infinite] mb-6">
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div 
                 key={`large-${index}`}
@@ -108,7 +108,7 @@ const TestimonialsSection = () => {
           </div>
 
           {/* Middle Row - Medium cards */}
-          <div className="flex animate-[scroll_25s_linear_infinite_reverse] mb-6">
+          <div className="flex animate-[marquee-right_25s_linear_infinite] mb-6">
             {[...testimonials.slice(2, 5), ...testimonials.slice(2, 5)].map((testimonial, index) => (
               <div 
                 key={`medium-${index}`}
@@ -135,7 +135,7 @@ const TestimonialsSection = () => {
           </div>
 
           {/* Bottom Row - Small cards */}
-          <div className="flex animate-[scroll_20s_linear_infinite]">
+          <div className="flex animate-[marquee-left_20s_linear_infinite]">
             {[...testimonials.slice(1, 4), ...testimonials.slice(1, 4)].map((testimonial, index) => (
               <div 
                 key={`small-${index}`}
@@ -162,17 +162,6 @@ const TestimonialsSection = () => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(-100%); }
-        }
-        @keyframes scroll_reverse {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-      `}</style>
     </section>
   );
 };

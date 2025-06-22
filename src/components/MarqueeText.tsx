@@ -6,7 +6,7 @@ const MarqueeText = () => {
 
   const companies = [
     'NETFLIX',
-    'AMAZON',
+    'AMAZON', 
     'GOOGLE',
     'MICROSOFT',
     'APPLE',
@@ -30,11 +30,11 @@ const MarqueeText = () => {
         setTimeout(() => {
           marquee.appendChild(firstChild);
           marquee.style.transform = 'translateX(0)';
-        }, 15000);
+        }, 10000);
       }
     };
 
-    const interval = setInterval(animate, 15000);
+    const interval = setInterval(animate, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -44,23 +44,22 @@ const MarqueeText = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Trusted by Industry Leaders
         </h2>
-        <p className="text-white/80 text-lg">
-          Join the brands that trust us with their content strategy
-        </p>
       </div>
       
       <div 
         ref={marqueeRef}
-        className="flex whitespace-nowrap transition-transform duration-[15000ms] ease-linear"
+        className="flex whitespace-nowrap transition-transform duration-[10000ms] ease-linear"
         style={{ transform: 'translateX(100%)' }}
       >
         {[...companies, ...companies].map((company, index) => (
-          <span 
+          <div 
             key={index}
-            className="text-3xl md:text-5xl font-bold text-white mx-12 opacity-90"
+            className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg mx-4 px-6 py-3 min-w-[120px]"
           >
-            {company}
-          </span>
+            <span className="text-lg font-bold text-white opacity-90">
+              {company}
+            </span>
+          </div>
         ))}
       </div>
     </section>

@@ -44,16 +44,25 @@ const Hero = () => {
 
         <button 
           onClick={scrollToContact}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-full font-bold text-xl transition-all duration-200 hover:scale-105 transform shadow-lg"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-full font-bold text-xl transition-all duration-200 hover:scale-105 transform shadow-lg mb-12"
         >
           Book Your Discovery Call
         </button>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+        {/* Statistics */}
+        <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-12">
+          <div className="bg-gray-800/50 border border-gray-700 px-8 py-4 rounded-lg">
+            <div className="text-2xl font-bold text-blue-500">500M+</div>
+            <div className="text-gray-300 text-sm">Views Generated</div>
+          </div>
+          <div className="bg-gray-800/50 border border-gray-700 px-8 py-4 rounded-lg">
+            <div className="text-2xl font-bold text-purple-500">4 Years</div>
+            <div className="text-gray-300 text-sm">Building Personal Brands</div>
+          </div>
+          <div className="bg-gray-800/50 border border-gray-700 px-8 py-4 rounded-lg">
+            <div className="text-2xl font-bold text-green-500">500+</div>
+            <div className="text-gray-300 text-sm">Videos Created</div>
+          </div>
         </div>
       </div>
     </section>

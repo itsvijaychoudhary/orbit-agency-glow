@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 
 const TestimonialsSection = () => {
@@ -6,7 +5,7 @@ const TestimonialsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObServer(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);

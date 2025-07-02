@@ -17,10 +17,10 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-      {/* Video editing timeline background */}
+      {/* Premiere Pro timeline background */}
       <div className="absolute inset-0">
         <img 
-          src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=1920&h=1080&fit=crop"
+          src="https://images.unsplash.com/photo-1551818255-e6e10975cd17?w=1920&h=1080&fit=crop"
           alt="Video editing timeline"
           className="w-full h-full object-cover opacity-20"
         />
@@ -56,19 +56,16 @@ const Hero = () => {
           Book Your Discovery Call
         </button>
 
-        {/* Statistics - Single horizontal row without boxes */}
+        {/* Statistics - Horizontal line with consistent white text */}
         <div className="flex flex-col md:flex-row gap-12 justify-center items-center mt-12 text-center">
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-blue-500 mb-2">500M+</div>
-            <div className="text-gray-300 text-lg">Views Generated</div>
+            <div className="text-white text-2xl md:text-3xl font-bold mb-2">500M+ Views Generated</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-purple-500 mb-2">4 Years</div>
-            <div className="text-gray-300 text-lg">Building Personal Brands</div>
+            <div className="text-white text-2xl md:text-3xl font-bold mb-2">4 Years Building Personal Brands</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">500+</div>
-            <div className="text-gray-300 text-lg">Videos Created</div>
+            <div className="text-white text-2xl md:text-3xl font-bold mb-2">500+ Videos Created</div>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ const AboutSection = () => {
           <h2 className={`text-4xl md:text-6xl font-bold mb-12 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            Meet Your <span className="text-blue-500">Content Strategist</span>
+            We Did It, <span className="text-blue-500">You Can Too</span>
           </h2>
         </div>
 
@@ -45,14 +45,21 @@ const AboutSection = () => {
                   alt="Content Creator"
                   className="w-64 h-64 rounded-full object-cover mx-auto shadow-2xl"
                 />
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
-                  100K+ YouTube Views
+                <div className="mt-6 text-center">
+                  <a 
+                    href="https://www.youtube.com/channel/UCMxcb0HGuvzv_35zUqs2U9w"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition-all duration-200 hover:scale-105"
+                  >
+                    100K+ Views on YouTube
+                  </a>
                 </div>
               </div>
             </div>
             
             <div className="lg:w-2/3">
-              <div className="text-lg md:text-xl text-gray-200 leading-relaxed mb-8">
+              <div className="text-lg md:text-xl text-gray-200 leading-relaxed">
                 <p className="mb-6">
                   After spending years creating content that resonates with millions, I've realized one thing: 
                   <span className="text-blue-400 font-semibold"> attention is the new currency.</span>
@@ -66,18 +73,6 @@ const AboutSection = () => {
                   Every scroll, every click, every view matters. Let me help you turn your expertise into 
                   content that converts and builds lasting relationships with your audience.
                 </p>
-              </div>
-              
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <div className="bg-gray-800/50 px-4 py-2 rounded-full">
-                  <span className="text-blue-400 font-semibold">500M+ Views Generated</span>
-                </div>
-                <div className="bg-gray-800/50 px-4 py-2 rounded-full">
-                  <span className="text-purple-400 font-semibold">4 Years Experience</span>
-                </div>
-                <div className="bg-gray-800/50 px-4 py-2 rounded-full">
-                  <span className="text-green-400 font-semibold">500+ Videos Created</span>
-                </div>
               </div>
             </div>
           </div>

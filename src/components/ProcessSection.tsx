@@ -69,15 +69,37 @@ const ProcessSection = () => {
   ];
 
   const getStepTransform = (index: number) => {
-    const stepProgress = Math.max(0, Math.min(1, (scrollProgress - index * 0.25) * 2));
-    const translateY = stepProgress * -100;
-    const opacity = 1 - stepProgress;
-    return { transform: `translateY(${translateY}%)`, opacity };
+    const stepTrigger = index * 0.33;
+    const nextStepTrigger = (index + 1) * 0.33;
+    
+    if (scrollProgress < stepTrigger) {
+      // Before this step is active
+      return { 
+        transform: `translateY(${100 * (index + 1)}%)`, 
+        opacity: 0,
+        zIndex: 10 - index
+      };
+    } else if (scrollProgress >= stepTrigger && scrollProgress < nextStepTrigger) {
+      // This step is active
+      return { 
+        transform: 'translateY(0%)', 
+        opacity: 1,
+        zIndex: 10 - index
+      };
+    } else {
+      // This step should move up and out
+      const exitProgress = (scrollProgress - nextStepTrigger) / 0.33;
+      return { 
+        transform: `translateY(-${exitProgress * 100}%)`, 
+        opacity: 1 - exitProgress * 0.5,
+        zIndex: 10 - index
+      };
+    }
   };
 
   return (
-    <section ref={containerRef} className="py-24 px-4 bg-gray-800 relative" style={{ height: '300vh' }}>
-      <div className="sticky top-0 h-screen flex items-center">
+    <section ref={containerRef} className="py-24 px-4 bg-gray-800 relative" style={{ height: '400vh' }}>
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <h2 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-1000 ${

@@ -68,69 +68,58 @@ const ProcessSection = () => {
     }
   ];
 
-  const getStepTransform = (index: number) => {
-    const stepTrigger = index * 0.33;
-    const nextStepTrigger = (index + 1) * 0.33;
+  const getCurrentCardIndex = () => {
+    if (scrollProgress < 0.33) return 0;
+    if (scrollProgress < 0.66) return 1;
+    return 2;
+  };
+
+  const getCardTransform = (index: number) => {
+    const currentIndex = getCurrentCardIndex();
+    const stepProgress = (scrollProgress - (index * 0.33)) / 0.33;
     
-    if (scrollProgress < stepTrigger) {
-      // Before this step is active - next card is hidden
-      if (index === 0) {
-        return { 
-          transform: 'translateY(0%)', 
-          scale: 1,
-          opacity: 1,
-          zIndex: 10 - index
-        };
-      } else {
-        return { 
-          transform: 'translateY(0%)', 
-          scale: 1,
-          opacity: 0,
-          zIndex: 10 - index
-        };
-      }
-    } else if (scrollProgress >= stepTrigger && scrollProgress < nextStepTrigger) {
-      // This step is active
-      const stepProgress = (scrollProgress - stepTrigger) / 0.33;
-      
-      if (index < steps.length - 1) {
-        // Card moving up with scale reduction
-        const moveUp = stepProgress * 100;
-        const scaleDown = 1 - (stepProgress * 0.3); // Scale down to 0.7
-        
-        // Next card fading in
-        const nextCardOpacity = stepProgress;
+    if (index < currentIndex) {
+      // Card has already moved out - completely hidden
+      return {
+        transform: 'translateY(-100%) scale(0.3)',
+        opacity: 0,
+        zIndex: 1
+      };
+    } else if (index === currentIndex) {
+      // Current active card
+      if (index < steps.length - 1 && stepProgress > 0) {
+        // Card is moving up and scaling down
+        const moveUp = Math.min(stepProgress * 100, 100);
+        const scaleDown = Math.max(1 - (stepProgress * 0.7), 0.3);
         
         return {
-          current: { 
-            transform: `translateY(-${moveUp}%)`, 
-            scale: scaleDown,
-            opacity: 1, // Keep opacity constant
-            zIndex: 10 - index
-          },
-          next: {
-            transform: 'translateY(0%)', 
-            scale: 1,
-            opacity: nextCardOpacity,
-            zIndex: 10 - index - 1
-          }
+          transform: `translateY(-${moveUp}%) scale(${scaleDown})`,
+          opacity: 1,
+          zIndex: 10
         };
       } else {
-        // Last card - just visible
-        return { 
-          transform: 'translateY(0%)', 
-          scale: 1,
+        // Card is stationary
+        return {
+          transform: 'translateY(0%) scale(1)',
           opacity: 1,
-          zIndex: 10 - index
+          zIndex: 10
         };
       }
+    } else if (index === currentIndex + 1) {
+      // Next card - fade in as current card moves out
+      const fadeIn = Math.max(0, Math.min(1, stepProgress));
+      
+      return {
+        transform: 'translateY(0%) scale(1)',
+        opacity: fadeIn,
+        zIndex: 5
+      };
     } else {
-      // After this step - card is gone
-      return { 
-        transform: 'translateY(-100%)', 
-        scale: 0.7,
-        opacity: 1,
-        zIndex: 10 - index
+      // Future cards - completely hidden
+      return {
+        transform: 'translateY(0%) scale(1)',
+        opacity: 0,
+        zIndex: 1
       };
     }
   };
@@ -154,88 +143,49 @@ const ProcessSection = () => {
 
           <div className="relative h-96">
             {steps.map((step, index) => {
-              const transforms = getStepTransform(index);
-              const isCurrentActive = typeof transforms === 'object' && 'current' in transforms;
+              const transforms = getCardTransform(index);
               
               return (
-                <div key={`step-${index}`}>
-                  {/* Current card */}
-                  <div 
-                    className="absolute inset-0 w-full transition-all duration-300 ease-out"
-                    style={isCurrentActive ? transforms.current : transforms}
-                  >
-                    <div className="flex flex-col lg:flex-row items-center gap-12 h-full">
-                      <div className="lg:w-1/2">
-                        <div className="bg-gray-700 p-8 rounded-lg shadow-2xl">
-                          <div className="flex items-center gap-4 mb-6">
-                            <span className="text-6xl font-bold text-blue-500">{step.step}</span>
-                            <div>
-                              <h3 className="text-2xl font-bold">{step.title}</h3>
-                              <span className="text-blue-400 font-medium">{step.duration}</span>
+                <div 
+                  key={`step-${index}`}
+                  className="absolute inset-0 w-full transition-all duration-500 ease-out"
+                  style={{
+                    transform: transforms.transform,
+                    opacity: transforms.opacity,
+                    zIndex: transforms.zIndex
+                  }}
+                >
+                  <div className="flex flex-col lg:flex-row items-center gap-12 h-full">
+                    <div className="lg:w-1/2">
+                      <div className="bg-gray-700 p-8 rounded-lg shadow-2xl">
+                        <div className="flex items-center gap-4 mb-6">
+                          <span className="text-6xl font-bold text-blue-500">{step.step}</span>
+                          <div>
+                            <h3 className="text-2xl font-bold">{step.title}</h3>
+                            <span className="text-blue-400 font-medium">{step.duration}</span>
+                          </div>
+                        </div>
+                        <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                          {step.description}
+                        </p>
+                        <div className="grid grid-cols-2 gap-3">
+                          {step.features.map((feature, idx) => (
+                            <div key={idx} className="flex items-center gap-2">
+                              <span className="text-green-500">✓</span>
+                              <span className="text-sm text-gray-400">{feature}</span>
                             </div>
-                          </div>
-                          <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                            {step.description}
-                          </p>
-                          <div className="grid grid-cols-2 gap-3">
-                            {step.features.map((feature, idx) => (
-                              <div key={idx} className="flex items-center gap-2">
-                                <span className="text-green-500">✓</span>
-                                <span className="text-sm text-gray-400">{feature}</span>
-                              </div>
-                            ))}
-                          </div>
+                          ))}
                         </div>
                       </div>
-                      <div className="lg:w-1/2">
-                        <div className={`h-64 bg-gradient-to-br ${step.color} rounded-lg flex items-center justify-center shadow-2xl`}>
-                          <span className="text-8xl opacity-20">
-                            {step.step === "01" ? "🎯" : step.step === "02" ? "🎬" : "📈"}
-                          </span>
-                        </div>
+                    </div>
+                    <div className="lg:w-1/2">
+                      <div className={`h-64 bg-gradient-to-br ${step.color} rounded-lg flex items-center justify-center shadow-2xl`}>
+                        <span className="text-8xl opacity-20">
+                          {step.step === "01" ? "🎯" : step.step === "02" ? "🎬" : "📈"}
+                        </span>
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Next card (for fade-in effect) */}
-                  {isCurrentActive && index < steps.length - 1 && (
-                    <div 
-                      className="absolute inset-0 w-full transition-all duration-300 ease-out"
-                      style={transforms.next}
-                    >
-                      <div className="flex flex-col lg:flex-row items-center gap-12 h-full">
-                        <div className="lg:w-1/2">
-                          <div className="bg-gray-700 p-8 rounded-lg shadow-2xl">
-                            <div className="flex items-center gap-4 mb-6">
-                              <span className="text-6xl font-bold text-blue-500">{steps[index + 1].step}</span>
-                              <div>
-                                <h3 className="text-2xl font-bold">{steps[index + 1].title}</h3>
-                                <span className="text-blue-400 font-medium">{steps[index + 1].duration}</span>
-                              </div>
-                            </div>
-                            <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                              {steps[index + 1].description}
-                            </p>
-                            <div className="grid grid-cols-2 gap-3">
-                              {steps[index + 1].features.map((feature, idx) => (
-                                <div key={idx} className="flex items-center gap-2">
-                                  <span className="text-green-500">✓</span>
-                                  <span className="text-sm text-gray-400">{feature}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="lg:w-1/2">
-                          <div className={`h-64 bg-gradient-to-br ${steps[index + 1].color} rounded-lg flex items-center justify-center shadow-2xl`}>
-                            <span className="text-8xl opacity-20">
-                              {steps[index + 1].step === "01" ? "🎯" : steps[index + 1].step === "02" ? "🎬" : "📈"}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               );
             })}

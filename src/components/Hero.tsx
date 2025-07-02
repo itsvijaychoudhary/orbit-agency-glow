@@ -17,8 +17,15 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"></div>
+      {/* Video editing timeline background */}
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=1920&h=1080&fit=crop"
+          alt="Video editing timeline"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90"></div>
+      </div>
       
       {/* Animated background elements */}
       <div className="absolute inset-0">
@@ -49,19 +56,19 @@ const Hero = () => {
           Book Your Discovery Call
         </button>
 
-        {/* Statistics */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-12">
-          <div className="bg-gray-800/50 border border-gray-700 px-8 py-4 rounded-lg">
-            <div className="text-2xl font-bold text-blue-500">500M+</div>
-            <div className="text-gray-300 text-sm">Views Generated</div>
+        {/* Statistics - Single horizontal row without boxes */}
+        <div className="flex flex-col md:flex-row gap-12 justify-center items-center mt-12 text-center">
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-blue-500 mb-2">500M+</div>
+            <div className="text-gray-300 text-lg">Views Generated</div>
           </div>
-          <div className="bg-gray-800/50 border border-gray-700 px-8 py-4 rounded-lg">
-            <div className="text-2xl font-bold text-purple-500">4 Years</div>
-            <div className="text-gray-300 text-sm">Building Personal Brands</div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-purple-500 mb-2">4 Years</div>
+            <div className="text-gray-300 text-lg">Building Personal Brands</div>
           </div>
-          <div className="bg-gray-800/50 border border-gray-700 px-8 py-4 rounded-lg">
-            <div className="text-2xl font-bold text-green-500">500+</div>
-            <div className="text-gray-300 text-sm">Videos Created</div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">500+</div>
+            <div className="text-gray-300 text-lg">Videos Created</div>
           </div>
         </div>
       </div>

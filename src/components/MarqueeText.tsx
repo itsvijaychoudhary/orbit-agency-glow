@@ -5,16 +5,14 @@ const MarqueeText = () => {
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   const companies = [
-    'NETFLIX',
-    'AMAZON', 
-    'GOOGLE',
-    'MICROSOFT',
-    'APPLE',
-    'TESLA',
-    'SPOTIFY',
-    'UBER',
-    'AIRBNB',
-    'SHOPIFY'
+    { name: 'Netflix', logo: 'https://logos-world.net/wp-content/uploads/2020/04/Netflix-Logo.png' },
+    { name: 'Amazon', logo: 'https://logos-world.net/wp-content/uploads/2020/04/Amazon-Logo.png' },
+    { name: 'Google', logo: 'https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png' },
+    { name: 'Microsoft', logo: 'https://logos-world.net/wp-content/uploads/2020/09/Microsoft-Logo.png' },
+    { name: 'Apple', logo: 'https://logos-world.net/wp-content/uploads/2020/04/Apple-Logo.png' },
+    { name: 'Tesla', logo: 'https://logos-world.net/wp-content/uploads/2020/09/Tesla-Logo.png' },
+    { name: 'Spotify', logo: 'https://logos-world.net/wp-content/uploads/2020/06/Spotify-Logo.png' },
+    { name: 'Uber', logo: 'https://logos-world.net/wp-content/uploads/2020/05/Uber-Logo.png' }
   ];
 
   useEffect(() => {
@@ -54,11 +52,13 @@ const MarqueeText = () => {
         {[...companies, ...companies].map((company, index) => (
           <div 
             key={index}
-            className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg mx-4 px-6 py-3 min-w-[120px]"
+            className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg mx-4 px-6 py-3 min-w-[140px] h-16"
           >
-            <span className="text-lg font-bold text-white opacity-90">
-              {company}
-            </span>
+            <img 
+              src={company.logo} 
+              alt={company.name}
+              className="max-h-8 max-w-[100px] object-contain filter brightness-0 invert opacity-90"
+            />
           </div>
         ))}
       </div>

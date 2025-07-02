@@ -27,27 +27,37 @@ const CTASection = () => {
   };
 
   return (
-    <section ref={containerRef} className="py-24 px-4 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden" id="contact">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    <section ref={containerRef} className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden" id="contact">
+      {/* Video editing timeline background */}
+      <div className="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=1920&h=1080&fit=crop"
+          alt="Video editing timeline"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90"></div>
+      </div>
+      
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h2 className={`text-4xl md:text-6xl font-bold text-white mb-6 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
-          Ready to Create Something 
+      <div className={`relative z-10 text-center max-w-6xl mx-auto transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+          Book a <span className="text-blue-500">Discovery</span>
           <br />
-          <span className="text-yellow-300">Amazing?</span>
-        </h2>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
+            Call Today
+          </span>
+        </h1>
         
-        <p className={`text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
-          Let's collaborate to bring your vision to life. Whether you're a startup or an established brand, 
-          we're here to help you make an impact.
+        <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Transform your personal brand with our complete content creation strategy. 
+          From ideation to viral content - we handle everything so you can focus on scaling.
         </p>
 
         <div className={`relative inline-block transition-all duration-1000 delay-400 ${
@@ -71,10 +81,26 @@ const CTASection = () => {
           
           <button 
             onClick={scrollToTop}
-            className="relative bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 hover:scale-105 transform shadow-lg"
+            className="relative bg-white text-gray-900 hover:bg-gray-100 px-12 py-4 rounded-full font-bold text-xl transition-all duration-200 hover:scale-105 transform shadow-lg"
           >
-            Let's Talk
+            Book Your Discovery Call
           </button>
+        </div>
+
+        {/* Statistics - Same as landing page */}
+        <div className="flex flex-col md:flex-row gap-12 justify-center items-center mt-16 text-center">
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-blue-500 mb-2">500M+</div>
+            <div className="text-gray-300 text-lg">Views Generated</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-purple-500 mb-2">4 Years</div>
+            <div className="text-gray-300 text-lg">Building Personal Brands</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">500+</div>
+            <div className="text-gray-300 text-lg">Videos Created</div>
+          </div>
         </div>
       </div>
     </section>

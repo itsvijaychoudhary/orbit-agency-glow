@@ -87,17 +87,11 @@ const CTASection = () => {
           </button>
         </div>
 
-        {/* Statistics - Horizontal line with consistent white text */}
-        <div className="flex flex-col md:flex-row gap-12 justify-center items-center mt-16 text-center">
-          <div className="text-center">
-            <div className="text-white text-2xl md:text-3xl font-bold mb-2">500M+ Views Generated</div>
-          </div>
-          <div className="text-center">
-            <div className="text-white text-2xl md:text-3xl font-bold mb-2">4 Years Building Personal Brands</div>
-          </div>
-          <div className="text-center">
-            <div className="text-white text-2xl md:text-3xl font-bold mb-2">500+ Videos Created</div>
-          </div>
+        {/* Statistics - Single horizontal line with smaller font */}
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 justify-center items-center mt-16 text-center">
+          <div className="text-white text-lg sm:text-xl font-bold">500M+ Views Generated</div>
+          <div className="text-white text-lg sm:text-xl font-bold">4 Years Building Personal Brands</div>
+          <div className="text-white text-lg sm:text-xl font-bold">500+ Videos Created</div>
         </div>
       </div>
     </section>
